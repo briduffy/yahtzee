@@ -1,10 +1,16 @@
 import React from 'react'
-import Dice from './Dice'
 import { Grid, Button, Divider } from 'semantic-ui-react'
+import Dice from './Dice'
 
-const Board = ({ roll, dice, rollDice }) => {
-  const MaxRoll = roll === 3
-  const disabled = MaxRoll ? { disabled: true } : {}
+const Board = ({ 
+  roll, 
+  dice, 
+  keep,
+  rollDice, 
+  toggleKept,
+}) => {
+  const maxRoll = roll === 3
+  const disabled = maxRoll ? { disabled: true } : {}
   return (
     <Grid>
       <Grid.Row>
@@ -16,9 +22,22 @@ const Board = ({ roll, dice, rollDice }) => {
           Roll Dice
         </Button>
         <Grid.Column width={16}>
-          <Divider hidden/>
+          <Divider hidden />
         </Grid.Column>
-        { roll > 0 && dice.map( (d, i) => <Dice key={i} value={d} /> )}
+        { roll > 0 && 
+          dice.map( (d,i) => {
+            const kept = keep.includes(i)
+            return (
+              <Dice 
+                key={i} 
+                value={d} 
+                kept={kept}
+                toggleKept={toggleKept}
+                index={i}
+              /> 
+            ) 
+          })
+        }
       </Grid.Row>
     </Grid>
   )
