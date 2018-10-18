@@ -9,13 +9,19 @@ import {
   NavBar,
 } from '@devpoint/dps-react-kit'
 import FetchUser from './components/FetchUser'
+import Scores from './components/Scores'
+
+const links = [
+  { text: 'Scores', url: '/scores' }
+]
 
 const App = () => (
   <>
-    <NavBar handleLogout={logout} />
+    <NavBar handleLogout={logout} authRoutes={links}/>
     <FetchUser>
       <Switch>
         <ProtectedRoute exact path="/" component={Game} />
+        <ProtectedRoute exact path="/scores" component={Scores} />
         <Route
           exact
           path="/login"

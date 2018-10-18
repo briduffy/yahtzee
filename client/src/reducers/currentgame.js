@@ -1,3 +1,4 @@
+import axios from 'axios'
 const ROLL_DICE = 'ROLL_DICE'
 const TOGGLE_KEPT = 'TOGGLE_KEPT'
 const RESET_ROLL = 'RESET_ROLL'
@@ -19,6 +20,14 @@ const scores = [
   { section: 'lower', name: 'Yahtzee', score: null },
   { section: 'lower', name: 'Chance', score: null, addAll: true }
 ];
+
+const BASE_URL = ''
+
+export const postScore = (value) => {
+  return (dispatch) => {
+    axios.post(`${BASE_URL}/api/scores`, { score: { value }})
+  }
+}
 
 export const newGame = () => {
   return { type: NEW_GAME }
