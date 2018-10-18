@@ -1,6 +1,8 @@
 import React from 'react'
 import { Image, Grid } from 'semantic-ui-react'
 import styled from 'styled-components'
+import { toggleKept } from '../reducers/currentGame'
+import { connect } from 'react-redux'
 import d1 from '../images/d1.png'
 import d2 from '../images/d2.png'
 import d3 from '../images/d3.png'
@@ -23,15 +25,15 @@ const images = {
   d6,
 }
 
-const Dice = ({ value, index, kept, toggleKept }) => (
+const Dice = ({ value, index, kept, dispatch }) => (
   <Grid.Column width={3}>
     <DiceImg
       selected={kept}
       src={images[`d${value}`]}
       alt={`dice value ${value}`}
-      onClick={() => toggleKept(index)}
+      onClick={() => dispatch(toggleKept(index))}
     />
   </Grid.Column>
 )
 
-export default Dice
+export default connect()(Dice)
