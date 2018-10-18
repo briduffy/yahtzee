@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@devpoint/dps-react-kit": "^1.0.6",
+    "axios": "^0.18.0",
+    "devise-axios": "^1.0.24",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.5",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
