@@ -14,9 +14,8 @@ export const addAllDice = (type, dice) => {
       break
     default:
       totals = dice
-
-    return addDice(totals)
-  }
+    }
+  return addDice(totals)
 }
 
 export const staticScore = (type, dice) => {

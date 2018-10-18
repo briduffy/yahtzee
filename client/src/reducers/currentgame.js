@@ -17,14 +17,14 @@ const scores = [
   { section: 'lower', name: 'High Straight', score: null },
   { section: 'lower', name: 'Yahtzee', score: null },
   { section: 'lower', name: 'Chance', score: null, addAll: true }
-]
+];
 
 export const resetRoll = () => {
-  return { type: RESET_ROLL}
+  return { type: RESET_ROLL }
 }
 
-export const updateScores = () => {
-  return { type: UPDATE_SCORES }
+export const updateScores = (scores) => {
+  return { type: UPDATE_SCORES, scores }
 }
 
 export const rollDice = () => {
@@ -65,17 +65,6 @@ export default (
   action
 ) => {
   switch(action.type) {
-    case ROLL_DICE:
-      return {
-        ...state,
-        dice: action.dice,
-        roll: state.roll + 1
-      }
-    case TOGGLE_KEPT: 
-      return {
-        ...state,
-        keep: action.keep
-      }
     case RESET_ROLL:
       return {
         ...state,
@@ -87,6 +76,17 @@ export default (
       return {
         ...state,
         scores: action.scores
+      }
+    case ROLL_DICE:
+      return {
+        ...state,
+        dice: action.dice,
+        roll: state.roll + 1
+      }
+    case TOGGLE_KEPT: 
+      return {
+        ...state,
+        keep: action.keep
       }
     default:
       return state
